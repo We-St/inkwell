@@ -3,18 +3,23 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('app', ['ionic'])
+angular.module('app', ['ionic', 'inkwell-calendar'])
 
 .controller('MainController', function($scope, $ionicSideMenuDelegate) {
-  $scope.facts = [
-    { title: 'Fact 1' },
-    { title: 'Fact 2' },
-    { title: 'Fact 3' }
-  ];
+//    $ionicSideMenuDelegate.toggleLeft();
+})
 
-  $scope.toggleSideMenu = function() {
-    $ionicSideMenuDelegate.toggleLeft();
-  };
+.config(function($stateProvider, $urlRouterProvider) {
+  $stateProvider.state('calendar', {
+    url: '/',
+    templateUrl: '../components/calendar/calendar.html',
+    controller: 'CalendarController'
+  
+  }).state('goals', {
+    url: '/goals',
+    templateUrl: '../components/goals/goals.html'
+  });
+  $urlRouterProvider.otherwise('/');
 })
 
 .run(function($ionicPlatform) {

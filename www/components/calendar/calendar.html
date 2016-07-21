@@ -1,0 +1,50 @@
+<ion-view title="Inkwell">
+  <ion-nav-buttons>
+    <!-- Open side menu. -->
+    <button class="button button-icon" menu-toggle>
+      <i class="icon ion-navicon"></i>
+    </button>
+  </ion-nav-buttons>
+
+
+  <ion-content class="has-footer">
+            <ion-scroll zooming="true" direction="x" scrollbar-x="false" style="width: 10000px;height: 80px; overflow: hidden;">
+              <div style="display: inline-block; width: 60px;margin: 10px 0;text-align: center;">
+                <div style="">MON</div>
+                <div style="font-size:2.5em; margin-top: 10px;">19</div>
+              </div>
+              <div style="display: inline-block; width: 60px;margin: 10px 0;text-align: center;">
+                <div style="">TUE</div>
+                <div style="font-size:2.5em; margin-top: 10px;">20</div>
+              </div>
+              <div style="display: inline-block; width: 60px;margin: 10px 0;text-align: center;">
+                <div style="">WED</div>
+                <div style="font-size:2.5em; margin-top: 10px;">21</div>
+              </div>
+              <div style="display: inline-block; width: 60px;margin: 10px 0;text-align: center;">
+                <div style="">THU</div>
+                <div style="font-size:2.5em; margin-top: 10px;">22</div>
+              </div>
+              <div style="display: inline-block; width: 60px;margin: 10px 0;text-align: center;">
+                <div style="">FRI</div>
+                <div style="font-size:2.5em; margin-top: 10px;">23</div>
+              </div>
+            </ion-scroll>
+
+            <ion-list>
+              <ion-item ng-repeat="fact in facts">
+                {{ fact.title }}
+              </ion-item>
+            </ion-list>
+  </ion-content>
+
+  <ion-footer-bar>
+    <div class="button-bar bar-footer">
+      <a class="button button-icon"><i class="icon ion-compose"></i></a>
+      <a class="button button-icon"><i class="icon ion-images"></i></a>
+      <a class="button button-icon"><i class="icon ion-location"></i></a>
+      <a class="button button-icon"><i class="icon ion-speedometer"></i></a>
+      <a class="button button-icon"><i class="icon ion-more"></i></a>
+    </div>
+  </ion-footer-bar>
+</ion-view>
