@@ -24,7 +24,7 @@
   </head>
   <body ng-app="app" ng-controller="MainController">
     <ion-side-menus>
-      <ion-side-menu-content>
+      <ion-side-menu-content drag-content="false">
         <ion-nav-bar class="bar-positive"></ion-nav-bar>
         <ion-nav-view></ion-nav-view>
       </ion-side-menu-content>
@@ -36,10 +36,10 @@
         <ion-content scroll="false">
           <ion-list>
             <ion-item>
-              <a href="/" menu-close><i class="icon ion-calendar"></i> Calendar</a>
+              <a href="/" menu-close=""><i class="icon ion-calendar"></i> Calendar</a>
             </ion-item>
             <ion-item>
-              <a href="#/goals" menu-close><i class="icon ion-flag"></i> Goals</a>
+              <a href="#/goals" menu-close=""><i class="icon ion-flag"></i> Goals</a>
             </ion-item>
             <!-- <ion-item><i class="icon ion-stats-bars"></i> Aggregation</ion-item> -->
             <ion-item><i class="icon ion-gear-a"></i> Settings</ion-item>

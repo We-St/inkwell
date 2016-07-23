@@ -6,36 +6,41 @@
     </button>
   </ion-nav-buttons>
 
+<ion-header-bar class="calendar-nav-container bar-subheader">
+  <div class="row calendar-nav">
+    <div class="col">
+      <div class="weekday">WED</div>
+      <div class="day">20</div>
+    </div>
+    <div class="col">
+      <div class="weekday">THU</div>
+      <div class="day">21</div>
+    </div>
+    <div class="col active">
+      <div class="weekday">FRI</div>
+      <div class="day">22</div>
+    </div>
+    <div class="col">
+      <div class="weekday">SAT</div>
+      <div class="day">23</div>
+    </div>
+    <div class="col">
+      <div class="weekday">SUN</div>
+      <div class="day">24</div>
+    </div>
+  </div>
+</ion-header-bar>
 
-  <ion-content class="has-footer">
-            <ion-scroll zooming="true" direction="x" scrollbar-x="false" style="width: 10000px;height: 80px; overflow: hidden;">
-              <div style="display: inline-block; width: 60px;margin: 10px 0;text-align: center;">
-                <div style="">MON</div>
-                <div style="font-size:2.5em; margin-top: 10px;">19</div>
+  <ion-content class="calendar-content has-header has-subheader has-footer">
+            <div class="card card-blue"
+                 ng-repeat="fact in facts">
+              <div class="item">
+                <h2>{{ fact.title }}</h2>
+                <i class="card-icon icon ion-beer"></i>
+                <p>Nine Inch Nails</p>
               </div>
-              <div style="display: inline-block; width: 60px;margin: 10px 0;text-align: center;">
-                <div style="">TUE</div>
-                <div style="font-size:2.5em; margin-top: 10px;">20</div>
-              </div>
-              <div style="display: inline-block; width: 60px;margin: 10px 0;text-align: center;">
-                <div style="">WED</div>
-                <div style="font-size:2.5em; margin-top: 10px;">21</div>
-              </div>
-              <div style="display: inline-block; width: 60px;margin: 10px 0;text-align: center;">
-                <div style="">THU</div>
-                <div style="font-size:2.5em; margin-top: 10px;">22</div>
-              </div>
-              <div style="display: inline-block; width: 60px;margin: 10px 0;text-align: center;">
-                <div style="">FRI</div>
-                <div style="font-size:2.5em; margin-top: 10px;">23</div>
-              </div>
-            </ion-scroll>
-
-            <ion-list>
-              <ion-item ng-repeat="fact in facts">
-                {{ fact.title }}
-              </ion-item>
-            </ion-list>
+            </div>
+            
   </ion-content>
 
   <ion-footer-bar>

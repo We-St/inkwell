@@ -1,1 +1,52 @@
 /* Empty. Add your own CSS if you like */
+.calendar-nav-container {
+	height: 70px !important;
+}
+
+.calendar-content {
+	padding-top: 25px;
+	padding-bottom: 0px;
+}
+
+div.calendar-nav .col {
+	text-align: center;
+	padding-top: 0;
+	position: relative;
+	color: #888;
+}
+
+div.calendar-nav .col.active {
+	color: #000;
+}
+
+div.calendar-nav .col.active::after {
+	content: '';
+	position: absolute;
+	left: 15%;
+	right: 15%;
+	bottom: -5px;
+	display: block;
+	height: 3px;
+	background-color: #387ef5;
+}
+
+.col .day {
+	font-size: 1.9em;
+	margin-top: 5px;
+}
+
+div.card-blue {
+	border-top: 4px solid #11c1f3;
+}
+
+div.card-blue h2 {
+	color: #11c1f3;
+	letter-spacing: 1px;
+}
+
+i.card-icon {
+	position: absolute;
+	right: 15px;
+	top: 15px;
+	color: #aaa;
+}
