@@ -1,0 +1,18 @@
+
+<div> 
+  <!-- Does not work with ion-modal-view here... investigate -->
+
+  <ion-content>
+    <h1>Choose a Color</h1>
+
+    <button class="color-select"
+            ng-class="color.css"
+            ng-repeat="color in activityColors"
+            ng-click="onSelect({color: color}); modal.hide()">
+    </button>
+    <div class="no-color"
+         ng-click="onSelect({color: null}); modal.hide()">
+      No Color
+    </div>
+  </ion-content>
+</div>

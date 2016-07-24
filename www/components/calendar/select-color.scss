@@ -1,0 +1,28 @@
+.select-color-modal {
+  top: 30%;
+  height: 200px;
+  min-height: 0;
+  left: 12%;
+  right: 12%;
+  width: auto;
+
+  h1 {
+    font-size: 1.2em;
+    padding: 10px 0 0 0;
+    text-align: center;
+  }
+
+  button.color-select {
+    width: 33%;
+    height: 40px;
+    display: inline-block;
+    margin: 5px;
+    border: 0;
+    background-color: transparent;
+  }
+
+  div.no-color {
+    text-align: center;
+    padding: 5px;
+  }
+}

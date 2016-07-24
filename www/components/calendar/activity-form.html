@@ -1,0 +1,56 @@
+<div class="activity-form"> 
+	<!-- Does not work with ion-modal-view here... investigate -->
+
+	<ion-header-bar class="bar bar-header bar-positive">
+		<h1 class="title">New Activity</h1>
+		<button class="button button-clear button-primary"
+						ng-click="cancel()">Cancel
+		</button>
+	</ion-header-bar>
+	<ion-content>
+		<form>
+			<div class="list">
+				<label class="item item-input item-stacked-label">
+					<span class="input-label">Title</span>
+					<input type="text" name="title" placeholder="Title" ng-model="activity.title" />
+				</label>
+				<label class="item item-input item-stacked-label">
+					<span class="input-label">Description</span>
+					<textarea placeholder="Description" ng-model="activity.description"></textarea>
+				</label>
+				<label class="item item-input item-stacked-label">
+					<span class="input-label">Location</span>
+					<input type="text" name="location" placeholder="Location" ng-model="activity.location" />
+				</label>
+				<label class="item item-input item-stacked-label">
+					<span class="input-label">Friends</span>
+					<input type="text" name="friends" placeholder="Friends" ng-model="activity.friends" />
+				</label>
+				<div class="item">
+					<span class="icon-preview" ng-if="activity.icon">
+						<i ng-class="activity.icon.css"></i>
+					</span>
+					<button class="button button-stable"
+									ng-click="openIconSelect()">
+						Choose Icon
+					</button>
+
+					<span class="color-preview"
+								ng-if="activity.color"
+						    ng-class="activity.color.css">
+					</span>
+					<button class="button button-stable"
+									ng-click="openColorSelect()">
+						Choose Color
+					</button>
+				</div>
+				<div class="item">
+					<button class="button button-block button-positive"
+									ng-click="save({activity: activity}); modal.hide()">
+						Add Activity
+					</button>
+				</div>
+			</div>
+		</form>
+	</ion-content>
+</div>

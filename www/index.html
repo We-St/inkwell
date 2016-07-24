@@ -14,7 +14,11 @@
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
+    <script src="components/calendar/module.js"></script>
     <script src="components/calendar/calendar.controller.js"></script>
+    <script src="components/calendar/activity-form.directive.js"></script>
+    <script src="components/calendar/select-icon.directive.js"></script>
+    <script src="components/calendar/select-color.directive.js"></script>
     <script src="js/app.js"></script>
   </head>
   <body ng-app="app" ng-controller="MainController">
@@ -33,10 +37,10 @@
             <ion-item>
               <a href="/" menu-close=""><i class="icon ion-calendar"></i> Calendar</a>
             </ion-item>
-            <ion-item>
+           <!-- <ion-item>
               <a href="#/goals" menu-close=""><i class="icon ion-flag"></i> Goals</a>
             </ion-item>
-            <!-- <ion-item><i class="icon ion-stats-bars"></i> Aggregation</ion-item> -->
+             <ion-item><i class="icon ion-stats-bars"></i> Aggregation</ion-item> -->
             <ion-item><i class="icon ion-gear-a"></i> Settings</ion-item>
             <ion-item><i class="icon ion-heart"></i> Donate</ion-item>
             <ion-item><i class="icon ion-information-circled"></i> About Inkwell</ion-item>

@@ -36,8 +36,12 @@
                  ng-repeat="fact in facts">
               <div class="item">
                 <h2>{{ fact.title }}</h2>
-                <i class="card-icon icon ion-beer"></i>
-                <p>Nine Inch Nails</p>
+                <i class="card-icon"
+                   ng-class="fact.icon.css"></i>
+                <p>{{ fact.description }}</p>
+              </div>
+              <div class="item" ng-if="fact.friends">
+                with {{ fact.friends}}
               </div>
             </div>
             
@@ -45,7 +49,7 @@
 
   <ion-footer-bar>
     <div class="button-bar bar-footer">
-      <a class="button button-icon"><i class="icon ion-compose"></i></a>
+      <a class="button button-icon" ng-click="addActivity()"><i class="icon ion-compose"></i></a>
       <a class="button button-icon"><i class="icon ion-images"></i></a>
       <a class="button button-icon"><i class="icon ion-location"></i></a>
       <a class="button button-icon"><i class="icon ion-speedometer"></i></a>

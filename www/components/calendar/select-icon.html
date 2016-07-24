@@ -1,0 +1,18 @@
+
+<div> 
+  <!-- Does not work with ion-modal-view here... investigate -->
+
+  <ion-content>
+    <h1>Choose an Icon</h1>
+
+    <button class="icon-select"
+          ng-repeat="icon in activityIcons"
+          ng-click="onSelect({icon: icon}); modal.hide()">
+      <i ng-class="icon.css"></i>
+    </button>
+    <div class="no-icon"
+         ng-click="onSelect({icon: null}); modal.hide()">
+      No Icon
+    </div>
+  </ion-content>
+</div>
