@@ -1,4 +1,4 @@
-var calendarModule = angular.module('inkwell-calendar', ['ionic']);
+var calendarModule = angular.module('inkwell-calendar', ['ionic', 'inkwell-core', 'ngCordova']);
 
 calendarModule.constant('activityIcons', [
 	{ title: 'Done', css: 'icon ion-checkmark' },
@@ -44,10 +44,13 @@ calendarModule.constant('activityIcons', [
 ]);
 
 calendarModule.constant('activityColors', [
-	{ css: 'inkwell-red' },
 	{ css: 'inkwell-blue' },
-	{ css: 'inkwell-yellow' },
+	{ css: 'inkwell-cyan' },
+	{ css: 'inkwell-gray' },
+	{ css: 'inkwell-red' },
 	{ css: 'inkwell-orange' },
-	{ css: 'inkwell-green' },
-	{ css: 'inkwell-purple' }
+	{ css: 'inkwell-yellow' },
+	{ css: 'inkwell-purple' },
+	{ css: 'inkwell-pink' },
+	{ css: 'inkwell-green' }
 ]);

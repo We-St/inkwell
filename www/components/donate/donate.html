@@ -1,0 +1,210 @@
+<ion-view title="Inkwell - Calendar">
+  <ion-nav-buttons>
+    <!-- Open side menu. -->
+    <button class="button button-icon" menu-toggle>
+      <i class="icon ion-navicon"></i>
+    </button>
+  </ion-nav-buttons>
+
+  <ion-content scroll="false" class="has-footer">
+    <tab-slide-box tab="2">
+     <div class="tsb-icons">
+       <div class="tsb-ic-wrp">
+        <ion-scroll direction="x" class="tsb-hscroll" delegate-handle="slide1Scroll">
+          <a href="javascript:;"
+             ng-repeat="tab in tabs" 
+             on-finish-render="test()">{{ tab.text }}
+            <span class="subtext">{{ tab.subtext }}</span>
+          </a>
+        </ion-scroll>
+      </div>
+    </div>
+    <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
+    <ion-slide>
+      <ion-scroll style="height:100%" delegate-handle="slide1Scroll" >
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+        <h3>Home content</h3>
+      </ion-scroll>
+    </ion-slide>
+    <ion-slide>
+      <ion-list>
+        <ion-scroll style="height:100%">
+         <div class="card"
+         ng-repeat="fact in facts"
+         ng-class="fact.color.css"
+         on-hold="showContextMenu(fact)">
+      <div class="item">
+        <h2>{{ fact.title }}</h2>
+        <i class="card-icon"
+           ng-class="fact.icon.css"></i>
+        <p ng-if="fact.description">
+          {{ fact.description }}
+        </p>
+        <p ng-if="fact.friends">
+          with
+          <span ng-repeat="friend in fact.friends">
+            {{ friend.title }}
+          </span>
+        </p>
+        <p ng-if="fact.location">
+          at {{ fact.location }}
+        </p>
+        <div ng-if="fact.type == 'counter'">
+          <div class="row counter">
+            <div class="col">
+              <button class="button button-stable"
+                      ng-click="changeCounterValue(fact, -1)">
+                  <i class="icon ion-minus"></i>
+              </button>
+            </div>
+            <div class="col value">{{ fact.value }}</div>
+            <div class="col">
+              <button class="button button-stable"
+                      ng-click="changeCounterValue(fact, 1)">
+                  <i class="icon ion-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+       </ion-item>
+     </ion-slide>
+     <ion-slide>
+      <h3>Mail content</h3>
+    </ion-slide>
+    <ion-slide>
+      <h3>Car content</h3>
+    </ion-slide>
+    <ion-slide>
+      <h3>Profile content</h3>
+    </ion-slide>
+    <ion-slide>
+      <h3>Favourites content</h3>
+    </ion-slide>
+    <ion-slide>
+      <h3>Chats content</h3>
+    </ion-slide>
+    <ion-slide>
+      <h3>Settings content</h3>
+    </ion-slide>
+    <ion-slide>
+      <h3>Photos content</h3>
+    </ion-slide>
+    <ion-slide>
+      <h3>Pets content</h3>
+    </ion-slide>
+  </ion-slide-box>
+</tab-slide-box>
+</ion-content>
+
+  <ion-footer-bar>
+    <div class="button-bar bar-footer">
+      <a class="button button-icon" ng-click="showActivityForm()"><i class="icon ion-compose"></i></a>
+      <a class="button button-icon"><i class="icon ion-images"></i></a>
+      <a class="button button-icon" ng-click="showLocationForm()"><i class="icon ion-location"></i></a>
+      <a class="button button-icon" ng-click="showCounterForm()"><i class="icon ion-speedometer"></i></a>
+      <!--
+      <a class="button button-icon"><i class="icon ion-more"></i></a>
+      -->
+    </div>
+  </ion-footer-bar>
+</ion-view>

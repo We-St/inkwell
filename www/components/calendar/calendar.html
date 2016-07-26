@@ -1,4 +1,4 @@
-<ion-view title="Inkwell">
+<ion-view title="Inkwell - Calendar">
   <ion-nav-buttons>
     <!-- Open side menu. -->
     <button class="button button-icon" menu-toggle>
@@ -6,54 +6,76 @@
     </button>
   </ion-nav-buttons>
 
-<ion-header-bar class="calendar-nav-container bar-subheader">
-  <div class="row calendar-nav">
-    <div class="col">
-      <div class="weekday">WED</div>
-      <div class="day">20</div>
+  <ion-content scroll="false" class="has-footer">
+    <tab-slide-box tab="14">
+     <div class="tsb-icons">
+       <div class="tsb-ic-wrp">
+        <ion-scroll direction="x" class="tsb-hscroll" delegate-handle="slide1Scroll">
+          <a href="javascript:;"
+             ng-repeat="tab in tabs" 
+             on-finish-render="test()">{{ tab.text }}
+            <span class="subtext">{{ tab.subtext }}</span>
+          </a>
+        </ion-scroll>
+      </div>
     </div>
-    <div class="col">
-      <div class="weekday">THU</div>
-      <div class="day">21</div>
-    </div>
-    <div class="col active">
-      <div class="weekday">FRI</div>
-      <div class="day">22</div>
-    </div>
-    <div class="col">
-      <div class="weekday">SAT</div>
-      <div class="day">23</div>
-    </div>
-    <div class="col">
-      <div class="weekday">SUN</div>
-      <div class="day">24</div>
-    </div>
-  </div>
-</ion-header-bar>
-
-  <ion-content class="calendar-content has-header has-subheader has-footer">
-            <div class="card card-blue"
-                 ng-repeat="fact in facts">
-              <div class="item">
-                <h2>{{ fact.title }}</h2>
-                <i class="card-icon"
-                   ng-class="fact.icon.css"></i>
-                <p>{{ fact.description }}</p>
+    <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
+    <ion-slide ng-repeat="tab in tabs" >
+      <ion-scroll class="card-scroll"
+                  delegate-handle="slide1Scroll" >
+        <div class="card"
+         ng-repeat="fact in tab.facts"
+         ng-class="fact.color.css"
+         on-hold="showContextMenu(fact)">
+          <div class="item">
+          <h2>{{ fact.title }}</h2>
+          <i class="card-icon"
+             ng-class="fact.icon.css"></i>
+          <p ng-if="fact.description">
+            {{ fact.description }}
+          </p>
+          <p ng-if="fact.friends">
+            with
+            <span ng-repeat="friend in fact.friends">
+              {{ friend.title }}
+            </span>
+          </p>
+          <p ng-if="fact.location">
+            at {{ fact.location }}
+          </p>
+          <div ng-if="fact.type == 'counter'">
+            <div class="row counter">
+              <div class="col">
+                <button class="button button-stable"
+                        ng-click="changeCounterValue(fact, -1)">
+                    <i class="icon ion-minus"></i>
+                </button>
               </div>
-              <div class="item" ng-if="fact.friends">
-                with {{ fact.friends}}
+              <div class="col value">{{ fact.value }}</div>
+              <div class="col">
+                <button class="button button-stable"
+                        ng-click="changeCounterValue(fact, 1)">
+                    <i class="icon ion-plus"></i>
+                </button>
               </div>
             </div>
-            
-  </ion-content>
+          </div>
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slide-box>
+</tab-slide-box>
+</ion-content>
 
   <ion-footer-bar>
     <div class="button-bar bar-footer">
-      <a class="button button-icon" ng-click="addActivity()"><i class="icon ion-compose"></i></a>
+      <a class="button button-icon" ng-click="showActivityForm()"><i class="icon ion-compose"></i></a>
       <a class="button button-icon"><i class="icon ion-images"></i></a>
-      <a class="button button-icon"><i class="icon ion-location"></i></a>
-      <a class="button button-icon"><i class="icon ion-speedometer"></i></a>
+      <a class="button button-icon" ng-click="showLocationForm()"><i class="icon ion-location"></i></a>
+      <a class="button button-icon" ng-click="showCounterForm()"><i class="icon ion-speedometer"></i></a>
+      <!--
       <a class="button button-icon"><i class="icon ion-more"></i></a>
+      -->
     </div>
   </ion-footer-bar>
 </ion-view>

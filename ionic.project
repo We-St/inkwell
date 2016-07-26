@@ -2,7 +2,7 @@
   "name": "Inkwell",
   "app_id": "fdd88b9b",
   "watchPatterns": [
-  	"www/**/*",
-  	"!www/**/*.scss" // We want app.min.css to trigger the reload, not the changed scss file.
+    "www/**/*",
+    "!www/**/*.scss"
   ]
 }

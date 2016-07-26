@@ -3,21 +3,20 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('app', ['ionic', 'inkwell-calendar'])
-
-.controller('MainController', function($scope, $ionicSideMenuDelegate) {
-//    $ionicSideMenuDelegate.toggleLeft();
-})
+angular.module('app', ['ionic', 'inkwell-calendar', 'inkwell-donate'])
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider.state('calendar', {
     url: '/',
     templateUrl: '../components/calendar/calendar.html',
     controller: 'CalendarController'
-  
   }).state('goals', {
     url: '/goals',
     templateUrl: '../components/goals/goals.html'
+  }).state('donate', {
+    url: '/donate',
+    templateUrl: '../components/donate/donate.html',
+    controller: 'DonationController'
   });
   $urlRouterProvider.otherwise('/');
 })
@@ -33,6 +32,9 @@ angular.module('app', ['ionic', 'inkwell-calendar'])
       // from snapping when text inputs are focused. Ionic handles this internally for
       // a much nicer keyboard experience.
       cordova.plugins.Keyboard.disableScroll(true);
+    }
+    if(!window.cordova) {
+      cordova = { file: {} }; // Prevent errors from happening on non-mobile browsers for testing.
     }
     if(window.StatusBar) {
       StatusBar.styleDefault();

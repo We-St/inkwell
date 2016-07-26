@@ -6,9 +6,9 @@
     <h1>Choose a Color</h1>
 
     <button class="color-select"
-            ng-class="color.css"
             ng-repeat="color in activityColors"
             ng-click="onSelect({color: color}); modal.hide()">
+      <div ng-class="color.css"></div>
     </button>
     <div class="no-color"
          ng-click="onSelect({color: null}); modal.hide()">

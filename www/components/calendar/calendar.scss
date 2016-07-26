@@ -1,46 +1,46 @@
-.calendar-nav-container {
-	height: 70px !important;
-}
-
-.calendar-content {
-	padding-top: 25px;
-	padding-bottom: 0px;
-}
-
-div.calendar-nav .col {
-	text-align: center;
-	padding-top: 0;
-	position: relative;
-	color: #888;
-
-	&.active {
-		color: #000;
-
-		&::after {
-			content: '';
-			position: absolute;
-			left: 15%;
-			right: 15%;
-			bottom: -5px;
-			display: block;
-			height: 3px;
-			background-color: #11c1f3;
-		}
-	}
-}
-
-.col .day {
-	font-size: 1.9em;
-	margin-top: 5px;
-}
-
-div.card-blue {
-	border-top: 4px solid #11c1f3;
+@mixin fact-card($color) {
+	border-top: 4px solid $color;
 
 	h2 {
-		color: #11c1f3;
+		color: $color;
 		letter-spacing: 1px;
-	}
+	}	
+}
+
+div.card.inkwell-cyan {
+	@include fact-card($inkwell-cyan);
+}
+
+div.card.inkwell-green {
+	@include fact-card($inkwell-green);
+}
+
+div.card.inkwell-purple {
+	@include fact-card($inkwell-purple);
+}
+
+div.card.inkwell-red {
+	@include fact-card($inkwell-red);
+}
+
+div.card.inkwell-orange {
+	@include fact-card($inkwell-orange);
+}
+
+div.card.inkwell-pink {
+	@include fact-card($inkwell-pink);
+}
+
+div.card.inkwell-yellow {
+	@include fact-card($inkwell-yellow);
+}
+
+div.card.inkwell-gray {
+	@include fact-card($inkwell-gray);
+}
+
+div.card.inkwell-blue {
+	@include fact-card($inkwell-blue);
 }
 
 i.card-icon {
@@ -48,4 +48,22 @@ i.card-icon {
 	right: 15px;
 	top: 15px;
 	color: #aaa;
+}
+
+div.card .counter {
+	.col {
+		text-align: center;
+	}
+	.value {
+		padding-top: 20px;
+		font-size: 2em;
+	}
+}
+
+.card-scroll {
+	height: 100%;
+}
+
+div.scroll .card:last-child {
+	margin-bottom: 300px;
 }

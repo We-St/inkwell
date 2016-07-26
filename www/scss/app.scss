@@ -22,8 +22,11 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "www/lib/ionic/scss/ionic";
 
 // Include app-specific SCSS.
+@import 'variables';
 @import 'www/components/calendar/calendar';
 @import 'www/components/calendar/activity-form';
+@import 'www/components/calendar/location-form';
+@import 'www/components/calendar/counter-form';
 @import 'www/components/calendar/select-icon';
 @import 'www/components/calendar/select-color';
 
@@ -35,10 +38,46 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   }
 }
 
+.inkwell-cyan {
+  background-color: $inkwell-cyan !important;
+}
+
+.inkwell-green {
+  background-color: $inkwell-green !important;
+}
+
+.inkwell-purple {
+  background-color: $inkwell-purple !important;
+}
+
 .inkwell-red {
-  background-color: #ff0000 !important;
+  background-color: $inkwell-red !important;
+}
+
+.inkwell-orange {
+  background-color: $inkwell-orange !important;
+}
+
+.inkwell-pink {
+  background-color: $inkwell-pink !important;
+}
+
+.inkwell-yellow {
+  background-color: $inkwell-yellow !important;
+}
+
+.inkwell-gray {
+  background-color: $inkwell-gray !important;
 }
 
 .inkwell-blue {
-  background-color: #0000ff !important;
+  background-color: $inkwell-blue !important;
+}
+
+.scroll {
+  height:100%;
+}
+
+.tabbed-slidebox .tsb-icons:after {
+  display:none;
 }

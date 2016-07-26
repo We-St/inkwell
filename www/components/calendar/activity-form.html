@@ -2,7 +2,7 @@
 	<!-- Does not work with ion-modal-view here... investigate -->
 
 	<ion-header-bar class="bar bar-header bar-positive">
-		<h1 class="title">New Activity</h1>
+		<h1 class="title">Activity</h1>
 		<button class="button button-clear button-primary"
 						ng-click="cancel()">Cancel
 		</button>
@@ -24,7 +24,15 @@
 				</label>
 				<label class="item item-input item-stacked-label">
 					<span class="input-label">Friends</span>
-					<input type="text" name="friends" placeholder="Friends" ng-model="activity.friends" />
+
+					<div>
+						<span class="friend-tag" ng-repeat="friend in activity.friends">
+						  {{ friend.title }}
+						  <button><i class="icon ion-close"></i></button>
+						 </span>
+					</div>
+					<div style="clear: both"></div>
+					<input type="text" name="friend" placeholder="Friends" ng-model="data.newFriend" ng-enter="addFriend()" />
 				</label>
 				<div class="item">
 					<span class="icon-preview" ng-if="activity.icon">
@@ -47,7 +55,7 @@
 				<div class="item">
 					<button class="button button-block button-positive"
 									ng-click="save({activity: activity}); modal.hide()">
-						Add Activity
+						Save Activity
 					</button>
 				</div>
 			</div>

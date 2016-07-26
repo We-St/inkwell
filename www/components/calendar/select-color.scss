@@ -1,6 +1,6 @@
 .select-color-modal {
   top: 30%;
-  height: 200px;
+  height: 300px;
   min-height: 0;
   left: 12%;
   right: 12%;
@@ -14,15 +14,19 @@
 
   button.color-select {
     width: 33%;
-    height: 40px;
+    height: 70px;
     display: inline-block;
-    margin: 5px;
     border: 0;
+    padding: 3px;
     background-color: transparent;
+
+    div {
+      height: 100%;
+    }
   }
 
   div.no-color {
     text-align: center;
-    padding: 5px;
+    padding: 8px;
   }
 }
