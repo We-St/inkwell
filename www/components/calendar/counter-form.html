@@ -2,9 +2,12 @@
   <!-- Does not work with ion-modal-view here... investigate -->
 
   <ion-header-bar class="bar bar-header bar-positive">
+    <button class="button button-clear button-secondary"
+            ng-click="save({counter: counter}); modal.hide()"><i class="icon ion-checkmark"></i>
+    </button>
     <h1 class="title">Counter</h1>
     <button class="button button-clear button-primary"
-            ng-click="cancel()">Cancel
+            ng-click="cancel()"><i class="icon ion-arrow-left-c"></i>
     </button>
   </ion-header-bar>
   <ion-content>
@@ -34,12 +37,6 @@
           <button class="button button-stable"
                   ng-click="openColorSelect()">
             Choose Color
-          </button>
-        </div>
-        <div class="item">
-          <button class="button button-block button-positive"
-                  ng-click="save({counter: counter}); modal.hide()">
-            Save Counter
           </button>
         </div>
       </div>

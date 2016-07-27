@@ -123,6 +123,25 @@ calendarModule.controller('CalendarController',
     $scope.ui.counterModal.show();
   }.bind(this);
 
+  $scope.showImagesForm = function(fact) {
+    $scope.selectedFact = fact || {
+      type: 'images',
+      date: $scope.currentDate
+    };
+
+    $scope.ui.imagesModal = $ionicModal.fromTemplate(
+      '<ion-modal-view>' + 
+      '  <images-form modal="ui.imagesModal"' + 
+      '              images="selectedFact"' +
+      '              save="saveFact(images)">' +
+      '  </images-form>' +
+      '</ion-modal-view>', {
+      scope: $scope
+    });
+    $scope.ui.imagesModal.show();
+  }.bind(this);
+
+
   $scope.showContextMenu = function(fact) {
     $ionicActionSheet.show({
       buttons: [
