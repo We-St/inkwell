@@ -49,6 +49,10 @@ calendarModule.controller('CalendarController',
     storageService.writeFacts($scope.currentDate, $scope.facts);
   };
 
+  $scope.saveAll = function() {
+    storageService.writeFacts($scope.currentDate, $scope.facts);
+  };
+
   $scope.deleteFact = function(fact) {
     var confirmPopup = $ionicPopup.confirm({
       title: 'Delete Item',
@@ -110,7 +114,7 @@ calendarModule.controller('CalendarController',
   $scope.changeCounterValue = function(counter, delta) {
     counter.value = parseInt(counter.value);
     counter.value += delta;
-    $scope.saveFact(counter);
+    $scope.saveAll();
   };
 });
 

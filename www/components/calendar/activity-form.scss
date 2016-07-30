@@ -55,20 +55,24 @@
       padding: 0;
     }
 
-    .col.middle {
-      text-align: cemter;
-    }
-
     .counter {
+      margin: 5px 0;
+
       &.card {
         margin: 10px 0;
       }
 
-      .row .col {
+      .row .col, .row .col-67 {
         line-height: 35px;
+        text-overflow: ellipsis;
+        overflow: hidden;
 
         button {
           margin: 0 0 4px 0;
+        }
+
+        &.value {
+          text-align: right;
         }
       }
     }

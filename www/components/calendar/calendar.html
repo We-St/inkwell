@@ -38,40 +38,41 @@
          ng-class="fact.color.css"
          on-hold="showContextMenu(fact)">
           <div class="item">
-          <h2>{{ fact.title }}</h2>
-          <i class="card-icon"
-             ng-class="fact.icon.css"></i>
-          <p ng-if="fact.description">
-            <pre>{{ fact.description }}</pre>
-          </p>
-          <p ng-if="fact.friends">
-            with
-            <span ng-repeat="friend in fact.friends">
-              {{ friend.title }},
-            </span>
-          </p>
-          <p ng-if="fact.location">
-            at {{ fact.location }}
-          </p>
-          <div ng-if="fact.counters && fact.counters.length">
-            <div class="row counter">
-              <div class="col">
-                <button class="button button-stable"
-                        ng-click="changeCounterValue(fact, -1)">
+            <h2>{{ fact.title }}</h2>
+            <i class="card-icon"
+               ng-class="fact.icon.css"></i>
+            <p ng-if="fact.description">
+              <pre>{{ fact.description }}</pre>
+            </p>
+            <p ng-if="fact.friends">
+              with 
+              <span ng-repeat="friend in fact.friends">
+                {{ friend.title }}{{ $last ? '' : ', ' }}
+              </span>
+            </p>
+            <p ng-if="fact.location">
+              at {{ fact.location }}
+            </p>
+          </div>
+          <div class="item counter" ng-repeat="counter in fact.counters">
+            <div class="row">
+              <div class="col-67">
+                {{ counter.title }}
+              </div>
+              <div class="col value">
+                <button class="button button-stable button-small"
+                        ng-click="changeCounterValue(counter, -1)">
                     <i class="icon ion-minus"></i>
                 </button>
-              </div>
-              <div class="col value">{{ fact.value }}</div>
-              <div class="col">
-                <button class="button button-stable"
-                        ng-click="changeCounterValue(fact, 1)">
+                {{ counter.value }}
+                <button class="button button-stable button-small"
+                        ng-click="changeCounterValue(counter, 1)">
                     <i class="icon ion-plus"></i>
                 </button>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
       <div ng-if="!tab.facts.length" class="no-items">
         No items yet.

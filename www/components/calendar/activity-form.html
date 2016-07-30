@@ -72,33 +72,30 @@
 					<div style="clear: both"></div>
 					<input type="text" name="friend" placeholder="Friends" ng-model="data.newFriend" ng-enter="addFriend()" />
 				</div>
-				<div class="item item-input item-stacked-label">
+<!-- 				<div class="item item-input item-stacked-label">
 					<div class="input-label">Images</div>
 
 					<div class="image"
 							 ng-repeat="image in images">
- 						<img data-ng-src="{{ image.base64 }}" />
+ 						<img ng-src="{{ image.src }}" />
 					</div>
 
 					<button class="button button-icon add-images"
 								  ng-click="chooseImages()">
 						<i class="icon ion-plus"></i>
 					</button>
-				</div>
+				</div> -->
 				<div class="item item-input item-stacked-label">
 					<div class="input-label">Counter</div>
 
-					<div class="list card counter"
-							 ng-if="activity.counters.length">
-						<div class="item row"
-								 ng-repeat="counter in activity.counters">
-							<div class="col">
+					<div class="item counter"
+							 ng-repeat="counter in activity.counters">
+						<div class="row">
+							<div class="col-67">
 								{{ counter.title }}
 							</div>
-	            <div class="col">
+	            <div class="col value">
 	           	  {{ counter.value }}
-	            </div>
-	            <div class="col middle">
 	              <a class="button button-stable button-small"
 	                      ng-click="openAddCounterForm(counter)">
 	                <i class="icon ion-edit"></i>

@@ -1,7 +1,7 @@
 var coreModule = angular.module('inkwell-core');
 
 
-coreModule.service('storageService', function($q, $cordovaFile) {
+coreModule.service('storageService', function($q, $cordovaFile, $cordovaFileTransfer) {
   var BASE_PATH = cordova.file.externalDataDirectory;
   var IMAGE_DIR = 'activity-images';
   var FACTS_FILE = 'inkwell.facts.txt';
@@ -98,14 +98,41 @@ coreModule.service('storageService', function($q, $cordovaFile) {
     var deferred = $q.defer();
 
     $cordovaFile.createDir(BASE_PATH, IMAGE_DIR, true).then(function(dir) {
-      resolveLocalFileSystemURL(fileInCache, function(file) {
-        file.moveTo(dir, file.name, function(success) {
-          deferred.resolve(success);
-          console.log(JSON.stringify(success));
-        }, function(error) {
+
+      var localPath = dir.nativeURL + 'img.jpg';
+
+      //console.log(fileInCache, localPath);
+
+      //fileInCache = fileInCache.replace("%", "%25");
+      console.info("FILEINCACHE:", fileInCache);
+      $cordovaFileTransfer.download(fileInCache, localPath, {}, true).then(function(success) {
+
+          console.log("bla", JSON.stringify(success));
+      }, function(error) {
+          console.log("err", JSON.stringify(error));
+          for(x in error) {
+            console.error(x, error[x]);
+          }
           deferred.reject(error);
-        })
-      });
+
+        });
+
+
+      // resolveLocalFileSystemURI(fileInCache, function(file) {
+      //   console.log('xx', JSON.stringify(file));
+
+      //   file.copyTo(dir, file.name, function(success) {
+      //     deferred.resolve(success);
+      //     console.log("bla", JSON.stringify(success));
+      //   }, function(error) {
+      //     console.log("err", JSON.stringify(error));
+      //     for(x in error) {
+      //       console.error(x, error[x]);
+      //     }
+      //     deferred.reject(error);
+
+      //   })
+      // });
     })
 
     return deferred.promise;

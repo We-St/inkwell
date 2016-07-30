@@ -8,14 +8,14 @@ angular.module('app', ['ionic', 'inkwell-calendar', 'inkwell-donate', 'ionic-dat
 .config(function($stateProvider, $urlRouterProvider, $compileProvider, ionicDatePickerProvider) {
   $stateProvider.state('calendar', {
     url: '/',
-    templateUrl: '../components/calendar/calendar.html',
+    templateUrl: 'components/calendar/calendar.html',
     controller: 'CalendarController'
   }).state('goals', {
     url: '/goals',
-    templateUrl: '../components/goals/goals.html'
+    templateUrl: 'components/goals/goals.html'
   }).state('donate', {
     url: '/donate',
-    templateUrl: '../components/donate/donate.html',
+    templateUrl: 'components/donate/donate.html',
     controller: 'DonationController'
   });
   $urlRouterProvider.otherwise('/');
@@ -33,7 +33,7 @@ angular.module('app', ['ionic', 'inkwell-calendar', 'inkwell-donate', 'ionic-dat
     closeOnSelect: true
   });
 
-  $compileProvider.imgSrcSanitizationWhitelist(/^\s(https|file|blob|cdvfile|data):|data:image\//);
+  $compileProvider.imgSrcSanitizationWhitelist(/^\s(https|file|blob|cdvfile|data|content):|data:image\//);
 })
 
 .run(function($ionicPlatform) {

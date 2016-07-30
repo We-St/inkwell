@@ -57,12 +57,30 @@ div.card.inkwell-blue {
 	}
 
 	div.card .counter {
-		.col {
-			text-align: center;
+		padding: 10px 15px;
+
+		.row {
+			padding: 0;
 		}
-		.value {
-			padding-top: 20px;
-			font-size: 2em;
+		
+		.col, .col-67, .col-80 {
+			padding: 0;
+			line-height: 30px;
+			text-align: left;
+
+			&.value {
+				text-align: right;
+				font-size: 1.5em;
+
+				button {
+					margin: 0 5px;
+				}
+			}
+		}
+
+		.col-67, .col-80 {
+		  text-overflow: ellipsis;
+		  overflow: hidden;
 		}
 	}
 
