@@ -1,22 +1,17 @@
 .activity-form {
 
-  .icon-preview {
+  .icon-preview, .color-preview {
     display: inline-block;
-    width: 30px;
-    height: 30px;
-    margin: 10px 10px 0 0;
-    font-size: 2em;
-  }
-
-  .color-preview {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    margin: 10px 10px 0 10px;
+    font-size: 1.9em;
+    padding: 5px 7px;
+    margin-bottom: 5px;
+    height: 38px;
+    width: 38px;
+    background-color: #eee;
   }
 
   span.friend-tag {
-    background-color: #11c1f3;
+    background-color: $positive;
     padding: 5px 30px 5px 10px;
     display: block;
     margin: 5px 5px 0 0;
@@ -32,6 +27,106 @@
       background-color: transparent;
       color: white;
       padding: 3px 10px;
+    }
+  }
+
+  .item {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    margin: 5px 10px; 
+
+    .input-label {
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 0.8em;
+      color: #777;
+    }
+
+    &.item-input {
+      padding: 6px 5px 5px 5px;
+    }
+
+    &.item-stacked-label > .icon, &.item-stacked-label .input-label, .input-label {
+      display: block;
+    }
+
+    .row, .col {
+      padding: 0;
+    }
+
+    .col.middle {
+      text-align: cemter;
+    }
+
+    .counter {
+      &.card {
+        margin: 10px 0;
+      }
+
+      .row .col {
+        line-height: 35px;
+
+        button {
+          margin: 0 0 4px 0;
+        }
+      }
+    }
+  }
+
+  select {
+    background-color: #eee;
+    border: 0;
+    padding: 10px;
+    width: 90%;
+    margin-bottom: 10px;
+  }
+
+  textarea {
+    height: 80px;
+  }
+
+  button.add-images, button.add-counter {
+    border: 1px solid #ccc;
+    font-size: 2em;
+    display: inlne-block;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    margin: 5px 5px 10px 0;
+  }
+
+  button.location-button {
+    position: absolute;
+    right: 0;
+    font-size: 0.8em;
+    bottom: 10px;
+  }
+
+  button.date-select {
+    background-color: #eee;
+    border: 0;
+    padding: 10px;
+    margin: 5px 0 10px 0;
+    width: 100%;
+  }
+
+  input.location {
+    width: 85%;
+  }
+
+  div.image {
+    width: 50px;
+    height: 50px;
+    border: 2px solid red;
+    float: left;
+    margin: 5px 5px 0 0;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 2px solid blue;
     }
   }
 }

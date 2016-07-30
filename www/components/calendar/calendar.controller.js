@@ -2,7 +2,8 @@
 var calendarModule = angular.module('inkwell-calendar');
 
 calendarModule.controller('CalendarController',
-    function($scope, $ionicModal, $ionicActionSheet, $ionicPopup, storageService) {
+    function($scope, $ionicModal, $ionicActionSheet, $ionicPopup, storageService,
+             activityTypes, activityIcons, activityColors) {
 
   $scope.currentDate = moment();
 
@@ -10,7 +11,7 @@ calendarModule.controller('CalendarController',
   for(var delta = -14; delta <= 7; delta++) {
     var date = moment($scope.currentDate).add(delta, 'days');
     $scope.tabs.push({
-      date: date,
+      date: date.toDate(),
       text: date.date(), 
       subtext: date.format('ddd').toUpperCase(), 
       facts: []
@@ -40,17 +41,13 @@ calendarModule.controller('CalendarController',
 		slider: null
 	};
 
-  $scope.$on('$ionicSlides.slideChangeEnd', function(event, data) {
-  	console.log('Slide', data.activeIndex, $scope.ui.slider);
-  });
-
   $scope.saveFact = function(fact) {
     var idx = $scope.facts.indexOf(fact);
     if (idx === -1) { // New activity.
       $scope.facts.push(fact);
     }
     storageService.writeFacts($scope.currentDate, $scope.facts);
-  }.bind(this);
+  };
 
   $scope.deleteFact = function(fact) {
     var confirmPopup = $ionicPopup.confirm({
@@ -64,14 +61,17 @@ calendarModule.controller('CalendarController',
         $scope.facts.splice(idx, 1);
         storageService.writeFacts($scope.currentDate, $scope.facts);
       }
-    }.bind(this));
-  }.bind(this);
+    });
+  };
 
   // Initialize modals.
   $scope.showActivityForm = function(fact) {
   	$scope.selectedFact = fact || {
       type: 'activity',
-      date: $scope.currentDate
+      date: $scope.currentDate,
+      type: activityTypes[0].id,
+      icon: _.find(activityIcons, { id: activityTypes[0].icon }),
+      color: _.find(activityColors, { id: activityTypes[0].color })
     };
 
     $scope.ui.activityModal = $ionicModal.fromTemplate(
@@ -84,63 +84,7 @@ calendarModule.controller('CalendarController',
       scope: $scope
     });
   	$scope.ui.activityModal.show();
-  }.bind(this);
-
-  $scope.showLocationForm = function(fact) {
-    $scope.selectedFact = fact || {
-      type: 'location',
-      date: $scope.currentDate
-    };
-
-    $scope.ui.locationModal = $ionicModal.fromTemplate(
-      '<ion-modal-view>' + 
-      '  <location-form modal="ui.locationModal"' + 
-      '                 location="selectedFact"' +
-      '                 save="saveFact(location)">' +
-      '  </location-form>' +
-      '</ion-modal-view>', {
-      scope: $scope
-    });
-    $scope.ui.locationModal.show();
-  }.bind(this);
-
-  $scope.showCounterForm = function(fact) {
-    $scope.selectedFact = fact || {
-      type: 'counter',
-      value: 0,
-      date: $scope.currentDate
-    };
-
-    $scope.ui.counterModal = $ionicModal.fromTemplate(
-      '<ion-modal-view>' + 
-      '  <counter-form modal="ui.counterModal"' + 
-      '                counter="selectedFact"' +
-      '                save="saveFact(counter)">' +
-      '  </counter-form>' +
-      '</ion-modal-view>', {
-      scope: $scope
-    });
-    $scope.ui.counterModal.show();
-  }.bind(this);
-
-  $scope.showImagesForm = function(fact) {
-    $scope.selectedFact = fact || {
-      type: 'images',
-      date: $scope.currentDate
-    };
-
-    $scope.ui.imagesModal = $ionicModal.fromTemplate(
-      '<ion-modal-view>' + 
-      '  <images-form modal="ui.imagesModal"' + 
-      '              images="selectedFact"' +
-      '              save="saveFact(images)">' +
-      '  </images-form>' +
-      '</ion-modal-view>', {
-      scope: $scope
-    });
-    $scope.ui.imagesModal.show();
-  }.bind(this);
-
+  };
 
   $scope.showContextMenu = function(fact) {
     $ionicActionSheet.show({
@@ -151,32 +95,22 @@ calendarModule.controller('CalendarController',
       titleText: 'Actions for ' + fact.title,
       cancel: function() {
         return false;
-      }.bind(this),
+      },
       buttonClicked: function(index) {
         if (index === 0) {
-          switch (fact.type) {
-            case 'activity':
-              $scope.showActivityForm(fact);
-              break;
-            case 'location':
-              $scope.showLoccationForm(fact);
-              break;
-            case 'counter':
-              $scope.showCounterForm(fact);
-              break;
-          }
+          $scope.showActivityForm(fact);
         } else if (index === 1) {
           $scope.deleteFact(fact);
         }
         return true;
-      }.bind(this)
+      }
     });
-  }.bind(this);
+  };
 
   $scope.changeCounterValue = function(counter, delta) {
     counter.value = parseInt(counter.value);
     counter.value += delta;
     $scope.saveFact(counter);
-  }.bind(this);
+  };
 });
 

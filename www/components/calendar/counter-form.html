@@ -1,16 +1,11 @@
-<div class="counter-form"> 
+<div> 
   <!-- Does not work with ion-modal-view here... investigate -->
 
   <ion-header-bar class="bar bar-header bar-positive">
-    <button class="button button-clear button-secondary"
-            ng-click="save({counter: counter}); modal.hide()"><i class="icon ion-checkmark"></i>
-    </button>
-    <h1 class="title">Counter</h1>
-    <button class="button button-clear button-primary"
-            ng-click="cancel()"><i class="icon ion-arrow-left-c"></i>
-    </button>
+    <div class="title">Counter</div>
   </ion-header-bar>
-  <ion-content>
+
+  <ion-content class="has-header has-footer">
     <form>
       <div class="list">
         <label class="item item-input item-stacked-label">
@@ -21,25 +16,15 @@
           <span class="input-label">Current Value</span>
           <input type="number" name="location" placeholder="Current Value" ng-model="counter.value" />
         </label>
-        <div class="item">
-          <span class="icon-preview" ng-if="counter.icon">
-            <i ng-class="counter.icon.css"></i>
-          </span>
-          <button class="button button-stable"
-                  ng-click="openIconSelect()">
-            Choose Icon
-          </button>
-
-          <span class="color-preview"
-                ng-if="counter.color"
-                ng-class="counter.color.css">
-          </span>
-          <button class="button button-stable"
-                  ng-click="openColorSelect()">
-            Choose Color
-          </button>
-        </div>
       </div>
     </form>
   </ion-content>
+
+  <ion-footer-bar class="bar-stable">
+    <div class="button-bar bar-footer">
+      <a class="button button-raised button-icon" ng-click="cancel()">Cancel</a>
+      <a class="button button-icon" 
+         ng-click="save({counter: counter}); modal.hide()">Save</a>
+    </div>
+  </ion-footer-bar>
 </div>

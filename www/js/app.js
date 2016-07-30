@@ -3,9 +3,9 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('app', ['ionic', 'inkwell-calendar', 'inkwell-donate'])
+angular.module('app', ['ionic', 'inkwell-calendar', 'inkwell-donate', 'ionic-datepicker'])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $compileProvider, ionicDatePickerProvider) {
   $stateProvider.state('calendar', {
     url: '/',
     templateUrl: '../components/calendar/calendar.html',
@@ -19,6 +19,21 @@ angular.module('app', ['ionic', 'inkwell-calendar', 'inkwell-donate'])
     controller: 'DonationController'
   });
   $urlRouterProvider.otherwise('/');
+
+  ionicDatePickerProvider.configDatePicker({
+    inputDate: new Date(),
+    setLabel: 'Select',
+    closeLabel: 'Close',
+    mondayFirst: true,
+    templateType: 'popup',
+    from: new Date(2012, 8, 1),
+    to: new Date(2018, 8, 1),
+    showTodayButton: false,
+    dateFormat: 'dd MMMM yyyy',
+    closeOnSelect: true
+  });
+
+  $compileProvider.imgSrcSanitizationWhitelist(/^\s(https|file|blob|cdvfile|data):|data:image\//);
 })
 
 .run(function($ionicPlatform) {

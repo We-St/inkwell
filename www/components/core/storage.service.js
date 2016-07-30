@@ -2,7 +2,8 @@ var coreModule = angular.module('inkwell-core');
 
 
 coreModule.service('storageService', function($q, $cordovaFile) {
-  var BASE_PATH = cordova.file.dataDirectory;
+  var BASE_PATH = cordova.file.externalDataDirectory;
+  var IMAGE_DIR = 'activity-images';
   var FACTS_FILE = 'inkwell.facts.txt';
 
   // Local cache for loaded facts.
@@ -59,7 +60,7 @@ coreModule.service('storageService', function($q, $cordovaFile) {
   this.groupByDate = function(rawFacts) {
     var result = {};
     angular.forEach(rawFacts, function(fact) {
-      if (!fact.date) {
+      if (!fact || !fact.date) {
         return; // Ignoe this fact.
       }
       var key = this.getKey(fact.date);
@@ -89,4 +90,24 @@ coreModule.service('storageService', function($q, $cordovaFile) {
     return moment(date).format('Y-M-D');
   }.bind(this);
 
+  /**
+   * Archives an image and moves it from the cache to the permanent storage.
+   * Returns a promise that resolves with the final path of the image.
+   */
+  this.archiveImage = function(fileInCache) {
+    var deferred = $q.defer();
+
+    $cordovaFile.createDir(BASE_PATH, IMAGE_DIR, true).then(function(dir) {
+      resolveLocalFileSystemURL(fileInCache, function(file) {
+        file.moveTo(dir, file.name, function(success) {
+          deferred.resolve(success);
+          console.log(JSON.stringify(success));
+        }, function(error) {
+          deferred.reject(error);
+        })
+      });
+    })
+
+    return deferred.promise;
+  }
 });

@@ -43,31 +43,54 @@ div.card.inkwell-blue {
 	@include fact-card($inkwell-blue);
 }
 
-i.card-icon {
-	position: absolute;
-	right: 15px;
-	top: 15px;
-	color: #aaa;
-}
+.calendar {
 
-div.card {
-	text-align: left;
-}
-
-div.card .counter {
-	.col {
-		text-align: center;
+	i.card-icon {
+		position: absolute;
+		right: 15px;
+		top: 15px;
+		color: #aaa;
 	}
-	.value {
-		padding-top: 20px;
+
+	div.card {
+		text-align: left;
+	}
+
+	div.card .counter {
+		.col {
+			text-align: center;
+		}
+		.value {
+			padding-top: 20px;
+			font-size: 2em;
+		}
+	}
+
+	.card-scroll {
+		height: 100%;
+	}
+
+	div.scroll .card:last-child {
+		margin-bottom: 300px;
+	}
+
+	.no-items {
+		margin-top: 30px;
 		font-size: 2em;
+		color: #999;
 	}
-}
 
-.card-scroll {
-	height: 100%;
-}
+	.tabbed-slidebox .tsb-icons {
+		margin: 0;
+		background-color: $positive;
+	}
 
-div.scroll .card:last-child {
-	margin-bottom: 300px;
+	.tabbed-slidebox .tsb-icons .scroll a {
+		color: white;
+
+		&.active {
+			color: white;
+			border-bottom: 5px solid $positive-light;
+		}
+	}
 }

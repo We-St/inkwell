@@ -1,12 +1,22 @@
-<ion-view title="Inkwell - Calendar">
+<ion-view title="Activities" class="calendar">
   <ion-nav-buttons>
     <!-- Open side menu. -->
     <button class="button button-icon" menu-toggle>
       <i class="icon ion-navicon"></i>
     </button>
   </ion-nav-buttons>
+  <ion-nav-buttons side="primary">
+<!--     <button class="button button-icon button-primary"
+            ng-click="switchView()">
+      <i class="icon ion-calendar"></i>
+    </button> -->
+    <button class="button button-icon button-primary"
+            ng-click="showActivityForm()">
+      <i class="icon ion-compose"></i>
+    </button>
+  </ion-nav-buttons>
 
-  <ion-content scroll="false" class="has-footer">
+  <ion-content scroll="false">
     <tab-slide-box tab="14">
      <div class="tsb-icons">
        <div class="tsb-ic-wrp">
@@ -32,18 +42,18 @@
           <i class="card-icon"
              ng-class="fact.icon.css"></i>
           <p ng-if="fact.description">
-            {{ fact.description }}
+            <pre>{{ fact.description }}</pre>
           </p>
           <p ng-if="fact.friends">
             with
             <span ng-repeat="friend in fact.friends">
-              {{ friend.title }}
+              {{ friend.title }},
             </span>
           </p>
           <p ng-if="fact.location">
             at {{ fact.location }}
           </p>
-          <div ng-if="fact.type == 'counter'">
+          <div ng-if="fact.counters && fact.counters.length">
             <div class="row counter">
               <div class="col">
                 <button class="button button-stable"
@@ -62,20 +72,12 @@
           </div>
         </div>
       </div>
+
+      <div ng-if="!tab.facts.length" class="no-items">
+        No items yet.
+      </div>
     </ion-slide>
   </ion-slide-box>
 </tab-slide-box>
 </ion-content>
-
-  <ion-footer-bar>
-    <div class="button-bar bar-footer">
-      <a class="button button-raised button-icon" ng-click="showActivityForm()"><i class="icon ion-compose"></i></a>
-      <a class="button button-icon" ng-click="showImagesForm()"><i class="icon ion-images"></i></a>
-      <a class="button button-icon" ng-click="showLocationForm()"><i class="icon ion-location"></i></a>
-      <a class="button button-icon" ng-click="showCounterForm()"><i class="icon ion-speedometer"></i></a>
-      <!--
-      <a class="button button-icon"><i class="icon ion-more"></i></a>
-      -->
-    </div>
-  </ion-footer-bar>
 </ion-view>
