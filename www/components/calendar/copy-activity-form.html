@@ -1,0 +1,27 @@
+<div>
+
+  <ion-header-bar class="bar bar-header bar-positive">
+    <h1 class="title">Copy Activity</h1>
+  </ion-header-bar>
+
+  <ion-content>
+    <ion-list ng-if="activities.length">
+      <ion-item ng-repeat="activity in activities"
+                ng-click="onSelect({activity: activity}); modal.hide()">
+        {{ activity.title }}
+        <div class="details">
+          <span>
+            {{ activity.date | date:'dd.MM.yyyy' }}
+          </span>
+          <span ng-if="activity.location">
+            , at {{ activity.location }}
+          </span>
+        </div>
+      </ion-item>
+    </ion-list>
+    <div ng-if="!activities.length">
+      No activities yet.
+    </div>
+  </ion-content>
+
+</div>

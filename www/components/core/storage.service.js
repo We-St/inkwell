@@ -10,9 +10,9 @@ coreModule.service('storageService', function($q, $cordovaFile, $cordovaFileTran
   var facts = null;
 
   /**
-   * Returns all facts.
+   * Returns all facts grouped by date.
    */
-  this.getAllFacts = function() {
+  this.getAllFactsByDate = function() {
     if (facts) {
       return $q.when(facts);
     }
@@ -25,6 +25,19 @@ coreModule.service('storageService', function($q, $cordovaFile, $cordovaFileTran
   }.bind(this);
 
   /**
+   * Returns all facts.
+   */
+  this.getAllFacts = function() {
+    if (facts) {
+      return $q.when(this.flattenFacts(facts));
+    }
+
+    return this.getAllFactsByDate().then(function(facts) {
+      return this.flattenFacts(facts);
+    }.bind(this));
+  }.bind(this);
+
+  /**
    * Returns all facts on a given day.
    */
   this.getFactsByDate = function(date) {
@@ -33,7 +46,7 @@ coreModule.service('storageService', function($q, $cordovaFile, $cordovaFileTran
     }
 
     var key = this.getKey(date);
-    return this.getAllFacts().then(function(facts) {
+    return this.getAllFactsByDate().then(function(facts) {
       return facts[key];
     }.bind(this));
   }.bind(this);

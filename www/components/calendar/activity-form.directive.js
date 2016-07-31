@@ -81,67 +81,6 @@ calendarModule.controller('ActivityFormController',
     $scope.data.newFriend = '';
   };
 
-  $scope.chooseImages = function() {
-    if (!$scope.images) {
-      $scope.images = [];
-    }
-
-    var options = {
-      destinationType: Camera.DestinationType.DATA_URL,
-      sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
-      encodingType: Camera.EncodingType.PNG,
-      width: 100,
-      height: 100,
-      quality: 50
-    };
-
-    $cordovaCamera.getPicture(options).then(function (galleryPath) {
-
-
-        var file = {
-          src: 'data:image/png;base64,' + galleryPath
-        };
-
-        $timeout(function() {
-          $scope.images.push(file);
-        });
-
-      // storageService.archiveImage(galleryPath).then(function(file) {
-      //   //console.info("xxx", file);
-      
-
-      //   plugins.Base64.encodeFile(file.nativeURL, function(base64) {
-      //     file.base64 = base64;
-      //     console.log("base64", base64.substr(100));
-      //     $scope.images.push(file);
-      //   });
-
-      // });
-
-      // _.forEach(results, function(path) {
-      //     plugins.Base64.encodeFile(path, function(base64) {
-      //       var file = {
-      //         base64: base64,
-      //         path: path
-      //       };
-
-      //       $timeout(function() {
-      //         $scope.images.push(file);
-      //       });
-      //     });
-
-      //   // storageService.archiveImage(path).then(function(file) {
-      //   //   plugins.Base64.encodeFile(file.nativeURL, function(base64) {
-      //   //     file.base64 = base64;
-      //   //     $scope.images.push(file);
-      //   //   });
-      //   // });
-      // });
-    }, function(error) {
-      console.log(error);
-    });
-  };
-
   $scope.ui.addCounterModal = $ionicModal.fromTemplate(
     '<ion-modal-view class="counter-modal">' + 
     '  <counter-form modal="ui.addCounterModal"' + 
@@ -180,6 +119,32 @@ calendarModule.controller('ActivityFormController',
       $scope.activity.friends.splice(idx, 1);
     }
   };
+
+  $scope.openCopyActivityModal = function() {
+    $scope.ui.copyActivityModal = $ionicModal.fromTemplate(
+      '<ion-modal-view class="copy-activity-form">' + 
+      '  <copy-activity-form modal="ui.copyActivityModal"' + 
+      '                      on-select="copyActivity(activity)">' +
+      '  </copy-activity-form>' +
+      '</ion-modal-view>', {
+      scope: $scope,
+      backdropClickToClose: true
+    });
+    
+    $scope.ui.copyActivityModal.show();
+  };
+
+  $scope.copyActivity = function(activity) {
+    $scope.activity.title = activity.title;
+    $scope.activity.friends = angular.copy(activity.friends);
+    $scope.activity.description = activity.description;
+    $scope.activity.location = activity.location;
+    $scope.activity.type = angular.copy(activity.type);
+    $scope.activity.icon = angular.copy(activity.icon);
+    $scope.activity.color = angular.copy(activity.color);
+    $scope.activity.counters = angular.copy(activity.counters);
+  };
+
 });
 
 calendarModule.directive('activityForm', function() {
